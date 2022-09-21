@@ -1,3 +1,5 @@
+use eulers_eureka::make_solutions;
+
 fn naive() -> u32 {
     (0..1000).filter(|n| n % 3 == 0 || n % 5 == 0).sum()
 }
@@ -13,6 +15,5 @@ fn solution_gauss_sum() -> u32 {
 }
 
 fn main() {
-    // println!("{}", naive());
-    println!("{}", solution_gauss_sum());
+    make_solutions!("Eureka 1", [solution_gauss_sum, naive]);
 }

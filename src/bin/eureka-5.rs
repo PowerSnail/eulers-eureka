@@ -1,4 +1,4 @@
-use eulers_eureka::{primes_under, make_solutions, name_array};
+use eulers_eureka::{primes_under, make_solutions};
 
 const TARGET: u64 = 20;
 

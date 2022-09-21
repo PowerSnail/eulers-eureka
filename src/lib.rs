@@ -24,7 +24,7 @@ macro_rules! make_solutions {
             .arg(
                 clap::Arg::new("solution")
                     .default_value(stringify!($s1))
-                    .value_parser(name_array![$s1, $($ss),*])
+                    .value_parser(make_solutions!(@name_array $s1, $($ss),*))
             )
             .get_matches();
         if let Some(s) = args.get_one::<String>("solution") {
@@ -37,11 +37,8 @@ macro_rules! make_solutions {
             unreachable!();
         }
     }};
-}
 
-#[macro_export]
-macro_rules! name_array {
-    [$($list:ident),* $(,)?] => {
+    (@name_array $($list:ident),* $(,)?) => {
         [$(stringify!($list)),*]
     }
 }

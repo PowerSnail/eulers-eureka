@@ -1,4 +1,4 @@
-use eulers_eureka::primes_under;
+use eulers_eureka::{primes_under, make_solutions};
 
 const TARGET: usize = 600851475143;
 
@@ -13,5 +13,5 @@ fn sieved() -> u64 {
 }
 
 fn main() {
-    println!("{}", sieved());
+    make_solutions!("Eureka 3", [sieved,]);
 }

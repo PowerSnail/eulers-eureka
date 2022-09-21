@@ -1,3 +1,5 @@
+use eulers_eureka::make_solutions;
+
 fn is_pan(n: u64) -> bool {
     let digits: Vec<u64> = (0..6)
         .map(|i| 10u64.pow(i))
@@ -27,5 +29,5 @@ fn naive() -> u64 {
 }
 
 fn main() {
-    println!("{}", naive());
+    make_solutions!("Eureka 4", [naive,]);
 }

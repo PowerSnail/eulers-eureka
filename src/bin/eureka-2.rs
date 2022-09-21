@@ -1,3 +1,5 @@
+use eulers_eureka::make_solutions;
+
 fn naive() -> u64 {
     let mut sum: u64 = 0;
     let mut x: u64 = 1;
@@ -26,6 +28,5 @@ fn count_3() -> u64 {
 }
 
 fn main() {
-    // println!("{}", naive());
-    println!("{}", count_3());
+    make_solutions!("Eureka 2", [count_3, naive]);
 }
