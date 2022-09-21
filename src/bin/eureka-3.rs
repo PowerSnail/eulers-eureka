@@ -13,5 +13,5 @@ fn sieved() -> u64 {
 }
 
 fn main() {
-    make_solutions!("Eureka 3", [sieved,]);
+    make_solutions!("Eureka 3", [sieved]);
 }

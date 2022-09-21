@@ -29,5 +29,5 @@ fn naive() -> u64 {
 }
 
 fn main() {
-    make_solutions!("Eureka 4", [naive,]);
+    make_solutions!("Eureka 4", [naive]);
 }
