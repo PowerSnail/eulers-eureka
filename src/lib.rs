@@ -16,3 +16,32 @@ pub fn primes_under(n: u64) -> Vec<u64> {
         .map(|(i, _)| i as u64)
         .collect()
 }
+
+#[macro_export]
+macro_rules! make_solutions {
+    ($name:expr, [$s1:ident, $($ss:ident),* $(,)?]) => {{
+        let args = clap::Command::new($name)
+            .arg(
+                clap::Arg::new("solution")
+                    .default_value(stringify!($s1))
+                    .value_parser(name_array![$s1, $($ss),*])
+            )
+            .get_matches();
+        if let Some(s) = args.get_one::<String>("solution") {
+            match s.as_str() {
+                stringify!($s1) => println!("{}", $s1()),
+                $(stringify!($ss) => println!("{}", $ss()),)*
+                _ => unreachable!(),
+            }
+        } else {
+            unreachable!();
+        }
+    }};
+}
+
+#[macro_export]
+macro_rules! name_array {
+    [$($list:ident),* $(,)?] => {
+        [$(stringify!($list)),*]
+    }
+}

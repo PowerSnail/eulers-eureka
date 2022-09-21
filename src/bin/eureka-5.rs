@@ -1,9 +1,9 @@
-use eulers_eureka::primes_under;
+use eulers_eureka::{primes_under, make_solutions, name_array};
 
 const TARGET: u64 = 20;
 
 fn naive() -> u64 {
-    for n in (TARGET+1).. {
+    for n in (TARGET + 1).. {
         if (2..=TARGET).all(|d| n % d == 0) {
             return n;
         }
@@ -16,7 +16,7 @@ fn larget_exponent(max: u64, base: u64) -> u64 {
 }
 
 fn prime_factors() -> u64 {
-    primes_under(TARGET+1)
+    primes_under(TARGET + 1)
         .into_iter()
         .map(|n| larget_exponent(TARGET, n))
         .reduce(|x, y| x * y)
@@ -24,6 +24,5 @@ fn prime_factors() -> u64 {
 }
 
 fn main() {
-    // println!("{}", naive());
-    println!("{}", prime_factors());
+    make_solutions!("Eureka 5", [prime_factors, naive]);
 }
