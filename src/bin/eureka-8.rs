@@ -1,7 +1,5 @@
 use eulers_eureka::make_solutions;
 
-
-
 const GRID: &[u8] = b"\
 73167176531330624919225119674426574742355349194934\
 96983520312774506326239578318016984801869478851843\
@@ -24,19 +22,13 @@ const GRID: &[u8] = b"\
 05886116467109405077541002256983155200055935729725\
 71636269561882670428252483600823257530420752963450";
 
+const WINDOW: usize = 13;
 
-const WINDOW: usize = 4;
-
-fn naive() -> u32 {
-    let mut max = 0;
-    for i in 0..GRID.len() - WINDOW {
-        let mut product: u32 = 1;
-        for j in i..(i + WINDOW) {
-            product *= (GRID[j] - b'0') as u32;
-        }
-        max = product.max(max);
-    }
-    max
+fn naive() -> u64 {
+    (0..GRID.len() - WINDOW)
+        .map(|i| GRID[i..(i + WINDOW)].iter().map(|n| (*n - b'0') as u64).product())
+        .max()
+        .unwrap()
 }
 
 fn main() {
