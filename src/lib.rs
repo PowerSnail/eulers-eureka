@@ -19,7 +19,7 @@ pub fn primes_under(n: u64) -> Vec<u64> {
 
 #[macro_export]
 macro_rules! make_solutions {
-    ($name:expr, [$s1:ident $(,)? $(,$ss:ident)* $(,)?]) => {{
+    ($name:expr, [$s1:ident $(,$ss:ident)* $(,)?]) => {{
         let args = clap::Command::new($name)
             .arg(
                 clap::Arg::new("solution")
